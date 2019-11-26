@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link rel="stylesheet" type="text/css" href="TicTac.css">
     <meta charset="utf-8">
-    <title></title>
+    <title>Tic-Tac-Toe</title>
   </head>
   <body>
-
+<table class = "table">
+</table>
+<script>
+function columns() {
+  for(let columns = 0; columns < 3; columns++) {
+    let number = columns;
+   let row = document.querySelector(".table").insertRow(columns);
+   let cell1 = row.insertCell(0);
+   let cell2 = row.insertCell(-1);
+   let cell3 = row.insertCell(-1);
+  }
+}
+columns();
+let count =  0;
+window.onload = function () {
+  document.querySelector('.table').onclick = function(ev) {
+    count = count + 1;
+    console.log(count);
+    if(count == 1 || count == 3 || count == 5 || count == 7 || count == 9) {
+    let text = document.createTextNode("X");
+    let rowIndex = ev.target.parentElement.rowIndex;
+    let cellIndex = ev.target.cellIndex;
+    alert('Row = ' + rowIndex + ', Column = ' + cellIndex);
+    let position = document.querySelector('.table').rows[rowIndex].cells[cellIndex];
+    position.appendChild(text);
+    position.style.pointerEvents = "none";
+  }  else if (count == 2 || count == 4 || count == 6 || count == 8) {
+    let text = document.createTextNode("O");
+    let rowIndex = ev.target.parentElement.rowIndex;
+    let cellIndex = ev.target.cellIndex;
+    alert('Row = ' + rowIndex + ', Column = ' + cellIndex);
+    let position = document.querySelector('.table').rows[rowIndex].cells[cellIndex];
+    position.appendChild(text);
+    position.style.pointerEvents = "none";
+  }
+  }
+}
+</script>
   </body>
 </html>
