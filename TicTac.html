@@ -22,10 +22,17 @@ let count =  0;
 let vertical1 = [];
 let vertical2 = [];
 let vertical3 = [];
+let horizontal1 = [];
+let horizontal2 = [];
+function checkX(x)  {
+  return x == "X";
+}
+function checkO(o)  {
+  return o == "O" ;
+}
 window.onload = function () {
   document.querySelector('.table').onclick = function(ev) {
     count = count + 1;
-    console.log(count);
     let rowIndex = ev.target.parentElement.rowIndex;
     let cellIndex = ev.target.cellIndex;
     let position = document.querySelector('.table').rows[rowIndex].cells[cellIndex];
@@ -40,19 +47,67 @@ window.onload = function () {
     position.appendChild(text);
     position.style.pointerEvents = "none";
   }
-  if(rowIndex == 0) {
+  if(rowIndex == 0 && cellIndex == 0) {
   vertical1.push(position.innerHTML);
-  console.log(vertical1);
+  horizontal1.push(position.innerHTML);
+} else if(rowIndex == 1 && cellIndex == 1) {
+  vertical2.push(position.innerHTML);
+  horizontal1.push(position.innerHTML);
+  horizontal2.push(position.innerHTML);
+} else if(rowIndex == 2 && cellIndex == 2) {
+  vertical3.push(position.innerHTML);
+  horizontal1.push(position.innerHTML);
+} else if(rowIndex == 0 && cellIndex == 2) {
+  vertical1.push(position.innerHTML);
+  horizontal2.push(position.innerHTML);
+} else if(rowIndex == 2 && cellIndex == 0) {
+  vertical3.push(position.innerHTML);
+  horizontal2.push(position.innerHTML);
+} else if(rowIndex == 0) {
+  vertical1.push(position.innerHTML);
 } else if(rowIndex == 1) {
   vertical2.push(position.innerHTML);
-  console.log(vertical2);
 } else if(rowIndex == 2) {
   vertical3.push(position.innerHTML);
-  console.log(vertical3);
 }
-if(vertical[0] == x)
+if(vertical1.length == 3) {
+  if(vertical1.every(checkX) == true) {
+    alert("Player one wins!");
+  } else  if (vertical1.every(checkO) == true) {
+    alert("Player two wins!");
   }
 }
+if(vertical2.length == 3) {
+  if(vertical2.every(checkX) == true) {
+    alert("Player one wins!");
+  } else  if (vertical2.every(checkO) == true) {
+    alert("Player two wins!");
+  }
+}
+if(vertical3.length == 3) {
+  if(vertical3.every(checkX) == true) {
+    alert("Player one wins!");
+  } else  if (vertical3.every(checkO) == true) {
+    alert("Player two wins!");
+  }
+}
+if(horizontal1.length == 3) {
+  if(horizontal1.every(checkX) == true) {
+    alert("Player one wins!");
+  } else  if (horizontal1.every(checkO) == true) {
+    alert("Player two wins!");
+  }
+}
+if(horizontal2.length == 3) {
+  if(horizontal2.every(checkX) == true) {
+    alert("Player one wins!");
+  } else  if (horizontal2.every(checkO) == true) {
+    alert("Player two wins!");
+  }
+}
+  }
+}
+
 </script>
   </body>
 </html>
