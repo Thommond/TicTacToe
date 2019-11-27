@@ -6,6 +6,10 @@ function columns() {
    let cell2 = row.insertCell(-1);
    let cell3 = row.insertCell(-1);
   }
+/*functions check what character's are
+in an array to see if winning statements are
+true later in the code
+ */
 }
 function checkX(x)  {
   return x == "X";
@@ -28,10 +32,24 @@ let downward2 = [];
 let downward3 = [];
 //loads the code inside the function while the page loads
 window.onload = function () {
+//The alert only happens if the count is equal to zero
+if (count == 0) {
+alert("It's player One's turn!");
+}
   //runs a function onclick of the table
   document.querySelector('.table').onclick = function(ev) {
     //count is equal to count plus one
     count = count + 1;
+/*The bottom two conditionals check the count and
+if one of the statements is true it alerts the players
+of who's turn it is*/
+if (count == 1 || count == 3 || count == 5 || count == 7 ) {
+  alert("It is Player Two's turn")
+}
+
+else if (count == 2 || count == 4 || count == 6 || count == 8 ) {
+  alert("It is Player One's turn")
+}
     //row index is pointing to the parent index
     let rowIndex = ev.target.parentElement.rowIndex;
     //cell is also pointing to the parent index
@@ -178,6 +196,15 @@ if(downward3.length == 3) {
     alert("Player two wins")
   }
 }
+/*The code below is checking if all the winning
+statements are false and if so it alerts the players
+ */
+if (count == 9 && downward1.every(checkO) == false && downward1.every(checkX) == false && downward2.every(checkO) == false && downward2.every(checkX) == false && downward3.every(checkO) == false && downward3.every(checkX) == false
+&& horizontal1.every(checkO) == false && horizontal1.every(checkX) == false && horizontal2.every(checkO) == false && horizontal2.every(checkX) == false && vertical1.every(checkO) == false && vertical1.every(checkX) == false
+&& vertical2.every(checkO) == false && vertical2.every(checkX) == false && vertical3.every(checkO) == false && vertical3.every(checkX) == false) {
+  alert("Oh no it's a draw")
+}
+
   }
 }
 
