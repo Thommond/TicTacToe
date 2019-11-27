@@ -23,6 +23,9 @@ let vertical2 = [];
 let vertical3 = [];
 let horizontal1 = [];
 let horizontal2 = [];
+let downward1 = [];
+let downward2 = [];
+let downward3 = [];
 //loads the code inside the function while the page loads
 window.onload = function () {
   //runs a function onclick of the table
@@ -62,27 +65,53 @@ window.onload = function () {
 characters to the array */
 
   if(rowIndex == 0 && cellIndex == 0) {
+  downward1.push(position.innerHTML);
   vertical1.push(position.innerHTML);
   horizontal1.push(position.innerHTML);
 } else if(rowIndex == 1 && cellIndex == 1) {
+  downward2.push(position.innerHTML);
   vertical2.push(position.innerHTML);
   horizontal1.push(position.innerHTML);
   horizontal2.push(position.innerHTML);
 } else if(rowIndex == 2 && cellIndex == 2) {
+  downward3.push(position.innerHTML);
   vertical3.push(position.innerHTML);
   horizontal1.push(position.innerHTML);
 } else if(rowIndex == 0 && cellIndex == 2) {
+  downward3.push(position.innerHTML);
   vertical1.push(position.innerHTML);
   horizontal2.push(position.innerHTML);
 } else if(rowIndex == 2 && cellIndex == 0) {
+  downward1.push(position.innerHTML);
   vertical3.push(position.innerHTML);
   horizontal2.push(position.innerHTML);
 } else if(rowIndex == 0) {
+  if(cellIndex = 1) {
+    downward2.push(position.innerHTML);
+    vertical1.push(position.innerHTML);
+  } else {
+  downward1.push(position.innerHTML);
   vertical1.push(position.innerHTML);
+}
 } else if(rowIndex == 1) {
+  if(cellIndex == 2) {
+    downward3.push(position.innerHTML);
+    vertical2.push(position.innerHTML);
+  } else if(cellIndex == 1){
+  downward2.push(position.innerHTML);
   vertical2.push(position.innerHTML);
+} else if(cellIndex == 0) {
+  downward1.push(position.innerHTML);
+  vertical2.push(position.innerHTML);
+}
 } else if(rowIndex == 2) {
+  if(cellIndex == 1) {
+    downward2.push(position.innerHTML);
+    vertical3.push(position.innerHTML);
+  } else {
+  downward3.push(position.innerHTML);
   vertical3.push(position.innerHTML);
+}
 }
 
 /* conditional's below check if the array's
@@ -122,10 +151,39 @@ if(horizontal2.length == 3) {
     alert("Player two wins!");
   }
 }
+
+if(downward1.length == 3) {
+  if(downward1.every(checkX) == true) {
+    alert("Player one wins")
+  }
+  else if (downward1.every(checkO) == true) {
+    alert("Player two wins")
   }
 }
 
-//This button reloads the page
+if(downward2.length == 3) {
+  if(downward2.every(checkX) == true) {
+    alert("Player one wins")
+  }
+  else if (downward2.every(checkO) == true) {
+    alert("Player two wins")
+  }
+}
+
+if(downward3.length == 3) {
+  if(downward3.every(checkX) == true) {
+    alert("Player one wins")
+  }
+  else if (downward3.every(checkO) == true) {
+    alert("Player two wins")
+  }
+}
+  }
+}
+
+
+
+//This button restarts the page
 let reload = document.querySelector('button');
 
 reload.onclick = function() {

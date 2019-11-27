@@ -1,19 +1,32 @@
 table tr {
-  height: 500px;
+  height:200px;
   width: 200px;
-  border: 5px solid purple;
   background-color: purple;
 }
 
 table {
-  height: 75%;
-  width: 75%;
+  height: 500px;
+  width: 500px;
   border: 5px solid black;
 }
 table td {
-font-size: 50pt;
+font-size: 40pt;
 text-align: center;
-width:150px;
-height: 150px;
+width:40px;
+height: 40px;
 
+}
+
+button {
+  background: grey;
+  border:  2px solid black;
+  width: 200px;
+  height: 50px;
+  font-size: 18pt;
+
+}
+
+body {
+  display: flex;
+  align-items: flex-end;
 }
