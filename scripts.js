@@ -1,4 +1,4 @@
-//creating a table grid
+// Creating a table grid
 function columns() {
   for(let columns = 0; columns < 3; columns++) {
    let row = document.querySelector(".table").insertRow(columns);
@@ -6,7 +6,8 @@ function columns() {
    let cell2 = row.insertCell(-1);
    let cell3 = row.insertCell(-1);
   }
-/*functions check what character's are
+/**
+Functions check what character's are
 in an array to see if winning statements are
 true later in the code
  */
@@ -17,11 +18,11 @@ function checkX(x)  {
 function checkO(o)  {
   return o == "O" ;
 }
-//calling the function
+// Calling the function
 columns();
-//count is for player rotations
+// Count is for player rotations
 let count =  0;
-//creating the array's for the winning feature
+// Creating the array's for the winning feature
 let vertical1 = [];
 let vertical2 = [];
 let vertical3 = [];
@@ -30,9 +31,9 @@ let horizontal2 = [];
 let downward1 = [];
 let downward2 = [];
 let downward3 = [];
-//loads the code inside the function while the page loads
+// Loads the code inside the function while the page loads
 window.onload = function () {
-//The alert only happens if the count is equal to zero
+// The alert only happens if the count is equal to zero
 if (count == 0) {
 alert("It's player One's turn!");
 }
@@ -40,9 +41,12 @@ alert("It's player One's turn!");
   document.querySelector('.table').onclick = function(ev) {
     //count is equal to count plus one
     count = count + 1;
-/*The bottom two conditionals check the count and
+/**
+The bottom two conditionals check the count and
 if one of the statements is true it alerts the players
-of who's turn it is*/
+of who's turn it is
+*/
+
 if (count == 1 || count == 3 || count == 5 || count == 7 ) {
   alert("It is Player Two's turn")
 }
@@ -50,37 +54,36 @@ if (count == 1 || count == 3 || count == 5 || count == 7 ) {
 else if (count == 2 || count == 4 || count == 6 || count == 8 ) {
   alert("It is Player One's turn")
 }
-    //row index is pointing to the parent index
+    // Row index is pointing to the parent index
     let rowIndex = ev.target.parentElement.rowIndex;
-    //cell is also pointing to the parent index
+    // Cell is also pointing to the parent index
     let cellIndex = ev.target.cellIndex;
-    //position is equal to query selector the table plus both index's
+    // Position is equal to query selector the table plus both index's
     let position = document.querySelector('.table').rows[rowIndex].cells[cellIndex];
-    //a conditional for odd numbers
+    // A conditional for odd numbers
     if(count == 1 || count == 3 || count == 5 || count == 7 || count == 9) {
-      //let text equal to the new text node of x
+      // Let text equal to the new text node of x
     let text = document.createTextNode("X");
-    //an alert for the location of the cellindex
-    alert('Row = ' + rowIndex + ', Column = ' + cellIndex);
-    //adding text to the element
+    // Adding text to the element
     position.appendChild(text);
-    //disables the double click on table elments
+    // Disables the double click on table elments
     position.style.pointerEvents = "none";
-    //a conditional for even numbers
+    // A conditional for even numbers
   }  else if (count == 2 || count == 4 || count == 6 || count == 8) {
-    //text is equal to the new string node of o
+    // Text is equal to the new string node of o
     let text = document.createTextNode("O");
-    //alerting the position of the character as before
-    alert('Row = ' + rowIndex + ', Column = ' + cellIndex);
-    //adding the text to the element
+
+    // Adding the text to the element
     position.appendChild(text);
-    //disables the double click as before
+    // Disables the double click as before
     position.style.pointerEvents = "none";
   }
 
 
-/* the below conditonals push the specified
-characters to the array */
+/**
+The below conditonals push the specified
+characters to the array
+*/
 
   if(rowIndex == 0 && cellIndex == 0) {
   downward1.push(position.innerHTML);
@@ -132,8 +135,10 @@ characters to the array */
 }
 }
 
-/* conditional's below check if the array's
-are 3 in length and  depending which is true then */
+/**
+Conditional's below check if the array's
+are 3 in length and  depending which is true then
+*/
 if(vertical1.length == 3) {
   if(vertical1.every(checkX) == true) {
     alert("Player one wins!");
@@ -196,13 +201,17 @@ if(downward3.length == 3) {
     alert("Player two wins")
   }
 }
-/*The code below is checking if all the winning
+
+/**
+The code below is checking if all the winning
 statements are false and if so it alerts the players
  */
+
 if (count == 9 && downward1.every(checkO) == false && downward1.every(checkX) == false && downward2.every(checkO) == false && downward2.every(checkX) == false && downward3.every(checkO) == false && downward3.every(checkX) == false
 && horizontal1.every(checkO) == false && horizontal1.every(checkX) == false && horizontal2.every(checkO) == false && horizontal2.every(checkX) == false && vertical1.every(checkO) == false && vertical1.every(checkX) == false
 && vertical2.every(checkO) == false && vertical2.every(checkX) == false && vertical3.every(checkO) == false && vertical3.every(checkX) == false) {
   alert("Oh no it's a draw")
+
 }
 
   }
@@ -210,7 +219,7 @@ if (count == 9 && downward1.every(checkO) == false && downward1.every(checkX) ==
 
 
 
-//This button restarts the page
+// This button restarts the page via refresh
 let reload = document.querySelector('button');
 
 reload.onclick = function() {
